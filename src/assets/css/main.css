@@ -1,2 +1,33 @@
-@import "utils/libs.css";
-@import "utils/reset.css";
+@import "~normalize.css/normalize.css";
+@import "./reset.css";
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+  grid-template-rows: 250px 1fr 100px;
+  grid-template-columns: 25% 1fr;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  background-color: gray;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: wheat;
+}
+
+.main {
+  grid-area: main;
+  background-color: burlywood;
+}
+
+.left-nav {
+  grid-area: nav;
+  background-color: cornflowerblue;
+}
