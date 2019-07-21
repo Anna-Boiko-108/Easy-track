@@ -18,6 +18,10 @@ body {
   color: #394241;
 }
 
+a {
+  color: #394241;
+}
+
 /* Main layout sections */
 .header {
   padding: 30px;
