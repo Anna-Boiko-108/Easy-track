@@ -1,20 +1,32 @@
 @import "~normalize.css/normalize.css";
 @import "./reset.css";
 
+html {
+  font-size: 10px;
+}
+
 body {
   display: grid;
   grid-template-areas:
     "header header"
     "nav main"
     "footer footer";
-  grid-template-rows: 250px 1fr 100px;
+  grid-template-rows: 150px 1fr 100px;
   grid-template-columns: 25% 1fr;
   height: 100vh;
+  font-size: 1.8rem;
+  color: #394241;
 }
 
+/* Main layout sections */
 .header {
   grid-area: header;
-  background-color: gray;
+  background-color: white;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 10px;
 }
 
 .footer {
@@ -30,4 +42,64 @@ body {
 .left-nav {
   grid-area: nav;
   background-color: cornflowerblue;
+}
+
+/* Logo */
+.logo {
+  padding-left: 15px;
+  text-align: center;
+  border: 5px solid #77c9d4;
+  cursor: pointer;
+}
+
+.logo:hover {
+  border: 5px dotted #77c9d4;
+}
+
+.logo img {
+  width: 200px;
+}
+
+/* .main-nav */
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.main-nav ul li {
+  position: relative;
+  width: 230px;
+}
+
+.main-nav > ul > li:not(:last-of-type) {
+  border-right: 2px solid #77c9d4;
+}
+
+.menu-btn {
+  display: block;
+  margin: 3px 10px;
+  padding: 15px 0;
+  font-size: 2.4rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.menu-btn:hover {
+  color: #ffffff;
+  background-color: #77c9d4;
+  box-shadow: 2px 5px 6px -5px #77c9d4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.main-nav li ul {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+.main-nav li:hover > ul {
+  display: block;
 }
