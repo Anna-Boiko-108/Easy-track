@@ -91,7 +91,7 @@ a {
   padding: 15px 0;
   font-size: 2.4rem;
   text-align: center;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .menu-btn:hover {
@@ -99,7 +99,7 @@ a {
   background-color: #77c9d4;
   box-shadow: 2px 5px 4px -3px #2f737c;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .main-nav li ul {
