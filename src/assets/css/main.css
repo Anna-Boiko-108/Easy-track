@@ -16,6 +16,7 @@ body {
   height: 100vh;
   font-size: 1.8rem;
   color: #394241;
+  /* overflow-y: hidden; */
 }
 
 a {
@@ -49,6 +50,7 @@ a {
 .menu {
   display: flex;
   justify-content: space-around;
+  /* justify-content: space-between; */
   align-items: flex-start;
   margin-bottom: 15px;
 }
@@ -126,6 +128,7 @@ a {
 
 /* Slider */
 .slider {
+  /* display: none; */
   max-width: 1200px;
   margin: auto;
   margin-top: 10px;
@@ -212,3 +215,198 @@ a {
 .left-nav li:hover > ul {
   display: flex;
 } */
+
+/* Modal window */
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto;
+  z-index: 1000;
+}
+
+.modal-active {
+  display: block;
+}
+
+/* Prevent double scroll on modal appear */
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.add-task-modal {
+  position: relative;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 50px;
+  padding: 2% 5%;
+  font-size: 2.2rem;
+  text-align: center;
+  background-color: #eee;
+  border: 5px dashed #77c9d4;
+  box-shadow: 5px 5px 8px #2f737c;
+}
+
+.add-task-modal label {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.add-task-modal input:not(.submit-btn),
+.add-task-modal textarea {
+  width: 100%;
+}
+
+.modal-subsection-wrapper {
+  display: flex;
+  align-items: stretch;
+  /* flex-wrap: wrap; */
+}
+
+.add-task-modal select,
+.add-task-modal input[type="date"] {
+  display: block;
+  width: 95%;
+}
+
+textarea {
+  resize: none;
+}
+
+.submit-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 50%;
+  padding: 10px;
+  font-size: 2.2rem;
+  text-align: center;
+  background-color: #57cab1;
+  border: 1px solid #1b9e88;
+  box-shadow: 2px 5px 4px -3px #1b9e88;
+}
+
+.submit-btn:hover {
+  color: #ffffff;
+  background-color: #1b9e88;
+  border: 1px solid #115f52;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.priority-label-wrapper {
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 10px;
+  font-size: 1.8rem;
+}
+
+/* Range */
+.task-label-range {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10px 0;
+  background: transparent;
+}
+
+.task-label-range:focus {
+  outline: none;
+}
+
+/* Range -webkit */
+.task-label-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 1.5px #cccccc, 0px 0px 2px #d9d9d9;
+  background-image: linear-gradient(to right, #49ff49, #ffff47, #ff4747);
+  border-radius: 3px;
+  border: 0px solid #ffffff;
+}
+.task-label-range::-webkit-slider-thumb {
+  box-shadow: 1.1px 1.1px 0.5px #09b38b, 0px 0px 1.1px #0acb9e;
+  border: 3px solid #ffffff;
+  height: 25px;
+  width: 34px;
+  border-radius: 4px;
+  background: #77c9d4;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+}
+.task-label-range:focus::-webkit-slider-runnable-track {
+  background-image: linear-gradient(to right, #008000, #ffff00, #ff0000);
+}
+
+/* Range -moz */
+.task-label-range::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 1.5px #cccccc, 0px 0px 2px #d9d9d9;
+  background-image: linear-gradient(to right, #49ff49, #ffff47, #ff4747);
+  border-radius: 3px;
+  border: 0px solid #ffffff;
+}
+.task-label-range::-moz-range-thumb {
+  box-shadow: 1.1px 1.1px 0.5px #09b38b, 0px 0px 1.1px #0acb9e;
+  border: 3px solid #ffffff;
+  height: 25px;
+  width: 34px;
+  border-radius: 4px;
+  background: #77c9d4;
+  cursor: pointer;
+}
+
+/* Range -ms */
+.task-label-range::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.task-label-range::-ms-fill-lower {
+  background-color: #ff4747;
+}
+.task-label-range::-ms-fill-upper {
+  background-color: #65d865;
+}
+.task-label-range::-ms-thumb {
+  width: 34px;
+  height: 25px;
+  background: #77c9d4;
+  cursor: pointer;
+}
+.task-label-range:focus::-ms-fill-lower {
+  background-color: #ff0000;
+}
+.task-label-range:focus::-ms-fill-upper {
+  background-color: #008000;
+}
+
+/* Close button */
+.close {
+  color: #aaaaaa;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #394241;
+  text-decoration: none;
+  cursor: pointer;
+}

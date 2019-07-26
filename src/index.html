@@ -73,13 +73,48 @@
         </header>
         <nav class="left-nav">
             <ul>
-                <li><a href="#" class="menu-btn"><i class="fas fa-plus"></i>Добавить задание</a></li>
+                <li id="addTask"><a class="menu-btn"><i class="fas fa-plus"></i>Добавить задание</a></li>
                 <li><a href="#" class="menu-btn"><i class="fas fa-list-ul"></i>Список заданий</a></li>
                 <li><a href="#" class="menu-btn"><i class="fas fa-archive"></i>Архив заданий</a></li>
                 <li><a href="#" class="menu-btn"><i class="fas fa-user-friends"></i>Исполнители</a></li>
             </ul>
         </nav>
-        <main class="main"></main>
+        <main class="main">
+            <section id="addTaskModal" class="modal">
+                <form method="post" class="add-task-modal">
+                    <h2>Новое задание</h2>
+                    <label for="taskName">Задание<br>
+                        <input type="text" name="taskName" id="taskName" required>
+                    </label>
+                    <label for="taskDescription">Описание<br>
+                        <textarea name="taskDescription" id="taskDescription" rows="10" required></textarea>
+                    </label>
+                    <label for="taskComment">Коментарий<br>
+                        <textarea name="taskComment" id="taskComment" rows="5"></textarea>
+                    </label>
+                    <div class="modal-subsection-wrapper">
+                        <label for="taskAssignee">Исполнитель<br>
+                            <select name="taskAssignee" required>
+                                <option></option>
+                                <option value="1">ФИО 1</option>
+                                <option value="2">ФИО 2</option>
+                                <option value="3">ФИО 3</option>
+                                <option value="4">ФИО 4</option>
+                            </select>
+                        </label>
+                        <label for="taskDueDate">Дата окончания<br>
+                            <input type="date" name="taskDueDate" id="taskDueDate">
+                        </label>
+                    </div>
+                    <label for="taskPriority">Приоритет<br>
+                        <input type="range" id="taskPriority" name="taskPriority" min="1" max="5" value="3" step="1"
+                            class="task-label-range">
+                    </label>
+                    <input type="submit" value="Добавить задание" class="submit-btn">
+                    <span class="close" id="closeModalBtn">&times;</span>
+                </form>
+            </section>
+        </main>
         <footer class="footer"></footer>
     </body>
 </html>
