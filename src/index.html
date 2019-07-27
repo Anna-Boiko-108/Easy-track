@@ -23,7 +23,7 @@
                                 <li><a href="#" class="menu-btn">Проект 3</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" class="menu-btn"><i class="fas fa-map-marked-alt"></i> Контакты</a>
+                        <li><a href="#contacts" class="menu-btn"><i class="fas fa-map-marked-alt"></i> Контакты</a>
                             <ul>
                                 <li><a href="#" class="menu-btn">Контакт 12345</a></li>
                                 <li><a href="#" class="menu-btn">Контакт 2</a></li>
@@ -73,13 +73,19 @@
         </header>
         <nav class="left-nav">
             <ul>
-                <li id="addTask"><a class="menu-btn"><i class="fas fa-plus"></i>Добавить задание</a></li>
-                <li><a href="#" class="menu-btn"><i class="fas fa-list-ul"></i>Список заданий</a></li>
-                <li><a href="#" class="menu-btn"><i class="fas fa-archive"></i>Архив заданий</a></li>
-                <li><a href="#" class="menu-btn"><i class="fas fa-user-friends"></i>Исполнители</a></li>
+                <li id="addTask"><a href="#add-task" class="menu-btn">
+                        <i class="fas fa-plus"></i>Добавить задание</a>
+                </li>
+                <li><a href="#tasks-active" class="menu-btn">
+                        <i class="fas fa-list-ul"></i>Список заданий</a>
+                </li>
+                <li><a href="#tasks-archived" class="menu-btn">
+                        <i class="fas fa-archive"></i>Архив заданий</a>
+                </li>
+                <li><a href="#assignees" class="menu-btn">
+                        <i class="fas fa-user-friends"></i>Исполнители</a>
+                </li>
             </ul>
-        </nav>
-        <main class="main">
             <section id="addTaskModal" class="modal">
                 <form method="post" class="add-task-modal" id="addTaskForm">
                     <h2>Новое задание</h2>
@@ -114,7 +120,8 @@
                     <span class="close" id="closeModalBtn">&times;</span>
                 </form>
             </section>
-        </main>
+        </nav>
+        <main class="main"></main>
         <footer class="footer"></footer>
     </body>
 </html>

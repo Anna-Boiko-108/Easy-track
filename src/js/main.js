@@ -1,9 +1,12 @@
-// document.addEventListener("DOMContentLoaded", init);
 import DB from "./db.js";
 import TasksList from "./tasks-list.js";
 import Task from "./task.js";
 import "./add-task.js";
+import renderTaskList from "./tasks-list-view.js";
 
+import "./router.js";
+
+// Load data from DB (localstorage)
 const db = new DB();
 const tasksList = new TasksList(db);
 
@@ -13,35 +16,12 @@ export function saveTask(data) {
 
   tasksList.add(task);
   db.update(tasksList);
-  //   PhonebookView.drawTable(phonebook);
+  // TODO: redirectToTaskList();
+  // TODO: Make new task shine green for a few seconds
 }
 
-// if (phonebook.isEmpty) {
-//   saveContact("Андрій", "8 099 6667778", "as@example.com");
-//   saveContact("Андрій 2", "089 4433444", "as@example.com");
-//   saveContact("Олег", "+38 (077) 777-7-777", "abc7@google.com");
-// }
-
-// function addEventListeners() {
-
-// Delete contact listener
-//   const table = document.getElementById("contacts-table");
-//   table.addEventListener("click", handleTableClick);
-// }
-
-// Delete contact handler
-// function handleTableClick(event) {
-//     if (event.target.id !== "trash-btn") {
-//       return;
-//     }
-//     const deleteId = PhonebookView.getDataOnClick(event);
-//     PhonebookView.hideContact(event.target.parentNode.parentNode);
-//     setTimeout(deleteContact, 300, deleteId);
-//   }
-
-//   // Main delete contact logic
-// function deleteContact(contactId) {
-//     phonebook.remove(contactId);
-//     db.update(phonebook);
-//     PhonebookView.drawTable(phonebook);
-//   }
+export function renderTemplate(route) {
+  if (route == "tasks-list-view") {
+    renderTaskList(tasksList.tasksList);
+  }
+}
