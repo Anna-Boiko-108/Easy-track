@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    require("autoprefixer"),
+    require("autoprefixer")({ grid: true }),
     require("css-mqpacker"),
     require("cssnano")({
       preset: [
