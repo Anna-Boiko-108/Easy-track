@@ -11,8 +11,8 @@ body {
     "header header"
     "nav main"
     "footer footer";
-  grid-template-rows: 1fr 1fr 100px;
-  grid-template-columns: 25% 1fr;
+  /* grid-template-rows: 1fr 1fr 100px; */
+  grid-template-columns: 330px 1fr;
   height: 100vh;
   font-size: 1.8rem;
   color: #394241;
@@ -409,4 +409,75 @@ textarea {
   color: #394241;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* Tasklist  */
+
+/* Fallback for IE11 */
+.main {
+  padding: 15px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.task {
+  margin: 15px;
+  width: calc((100% / 3) - 30px);
+}
+
+@media screen and (max-width: 1150px) {
+  .task {
+    width: calc((100% / 2) - 30px);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .task {
+    width: 100%;
+  }
+}
+
+.task {
+  margin-right: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+@supports (grid-area: auto) {
+  .main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .task {
+    margin: 15px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 1150px) {
+    .task {
+      width: auto;
+    }
+  }
+}
+
+.task {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.task-name {
+  text-align: center;
+}
+
+.task-description,
+.task-comment {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.task-id {
+  display: none;
 }

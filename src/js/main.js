@@ -2,7 +2,7 @@ import DB from "./db.js";
 import TasksList from "./tasks-list.js";
 import Task from "./task.js";
 import "./add-task.js";
-import renderTaskList from "./tasks-list-view.js";
+import renderTasksList from "./tasks-list-view.js";
 
 import "./router.js";
 
@@ -22,6 +22,6 @@ export function saveTask(data) {
 
 export function renderTemplate(route) {
   if (route == "tasks-list-view") {
-    renderTaskList(tasksList.tasksList);
+    renderTasksList(tasksList.tasksList);
   }
 }
