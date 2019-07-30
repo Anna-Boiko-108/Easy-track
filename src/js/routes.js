@@ -22,6 +22,11 @@ const routes = [
   {
     name: null,
     href: "assignees"
+  },
+  {
+    name: "show-task-view",
+    href: "task",
+    args: null
   }
 ];
 

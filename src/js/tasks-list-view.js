@@ -10,7 +10,8 @@ function render(data) {
     return (
       acc +
       `<article class="task">
-<h3 class="task-name"><span class="task-id">${task.id}</span>${task.name}</h3>
+<p class="task-id">${task.id}</p>
+<h3 class="task-name">${task.name}</h3>
 <p class="task-description">${task.description}</p>
 <p class="task-comment">${task.comment}</p>
 <p class="task-assignee">${task.assignee}</p>

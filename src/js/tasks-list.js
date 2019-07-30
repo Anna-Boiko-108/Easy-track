@@ -21,5 +21,7 @@ export default class TasksList {
     this.tasksList[index].archived = true;
   }
 
-  // TODO: add find method
+  findById(taskId) {
+    return this.tasksList[taskId - 1];
+  }
 }
