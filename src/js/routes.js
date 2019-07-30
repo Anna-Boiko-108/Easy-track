@@ -12,7 +12,7 @@ const routes = [
     href: "add-task"
   },
   {
-    name: "tasks-list-view",
+    name: "show-tasks-list-view",
     href: "tasks-active"
   },
   {

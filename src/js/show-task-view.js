@@ -9,14 +9,18 @@ export default function render(task) {
 <span class="close" id="closeTaskModalBtn">&times;</span>
 <div><div class="btn" id="modifyTaskBtn">
 <a href="#task/${task.id}/modify">Редактировать</a></div>
-<div class="btn"><a href="#task/${task.id}/archive">Архивировать</a></div></div>
+<div class="btn" id="archiveTaskBtn">
+<a href="#task/${task.id}/archive">Архивировать</a></div></div>
 </article>`;
 
   const modalSection = document.createElement("section");
-  modalSection.classList.add("modal", "modal-active", "task-modal");
+  // modalSection.classList.add("modal", "modal-active", "task-modal");
+  modalSection.classList.add("modal");
+  modalSection.classList.add("modal-active");
+  modalSection.classList.add("task-modal");
   modalSection.innerHTML = taskModalHTML;
 
-  const main = document.getElementsByClassName("main")[0];
+  const main = document.querySelector(".main");
   main.appendChild(modalSection);
   document.body.classList.add("no-scroll");
 }

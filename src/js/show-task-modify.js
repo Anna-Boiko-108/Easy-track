@@ -11,12 +11,12 @@ export function initTaskModifyModal() {
   window.addEventListener("click", outOfModalClickHandler);
   function outOfModalClickHandler(event) {
     if (event.target == modalSection) {
-      hideModifyTaskModal();
+      hideModifyTaskModal(event);
     }
   }
 
-  const modifyTaskBtn = document.getElementById("modifyTaskBtn");
-  modifyTaskBtn.addEventListener("click", hideTaskModal);
+  const modifyTaskBtn = document.getElementById("closeModifyTaskModalBtn");
+  modifyTaskBtn.addEventListener("click", hideModifyTaskModal);
 }
 
 function modifyTaskSubmitHandler(event) {
@@ -35,14 +35,27 @@ function modifyTaskSubmitHandler(event) {
   };
 
   modifyTask(task);
-  hideModifyTaskModal();
+  hideModifyTaskModal(event);
 }
 
 // Hide modal
-function hideModifyTaskModal() {
-  document.body.classList.remove("no-scroll");
+function hideModifyTaskModal(event) {
+  const closeModalBtn = document.getElementById("closeModifyTaskModalBtn");
   const modifyTaskModal = document.querySelector(".task-modify-modal");
+  const taskModifyForm = document.forms["task-modify-form"];
+
+  const target = event.target;
+  if (
+    target == closeModalBtn ||
+    target == modifyTaskModal ||
+    target == taskModifyForm
+  ) {
+    const taskId = document.getElementById("modifyTaskId").innerText;
+    window.location.hash = "task/" + taskId;
+  }
+
+  document.body.classList.remove("no-scroll");
   modifyTaskModal.parentNode.removeChild(modifyTaskModal);
 
-  window.history.back();
+  // window.location.hash = "task/" + id;
 }

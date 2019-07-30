@@ -1,31 +1,3 @@
-const main = document.getElementsByClassName("main")[0];
-main.addEventListener("click", taskClickHandler);
-
-function taskClickHandler(event) {
-  // Find task's id node
-  let target = event.target;
-  let fired = false;
-
-  while (target.className != "main") {
-    if (target.className == "task") {
-      fired = true;
-      break;
-    }
-    target = target.parentNode;
-  }
-
-  if (!fired) return;
-
-  // Find task's id value
-  const listOfTaskNodes = Array.from(target.children);
-  const taskId = listOfTaskNodes.find(node => {
-    return node.classList.contains("task-id");
-  }).innerText;
-
-  //   Change hash
-  window.location.hash = "task/" + taskId;
-}
-
 export function initTaskModal() {
   // Close modal by clicking close button
   const closeModalBtn = document.getElementById("closeTaskModalBtn");
@@ -36,7 +8,7 @@ export function initTaskModal() {
   window.addEventListener("click", outOfModalClickHandler);
   function outOfModalClickHandler(event) {
     if (event.target == modalSection) {
-      hideTaskModal();
+      hideTaskModal(event);
     }
   }
 
@@ -46,9 +18,15 @@ export function initTaskModal() {
 }
 
 // Close modal
-function hideTaskModal() {
+function hideTaskModal(event) {
+  const closeModalBtn = document.getElementById("closeTaskModalBtn");
+
   document.body.classList.remove("no-scroll");
   const modalSection = document.querySelector(".task-modal");
   modalSection.parentNode.removeChild(modalSection);
-  // window.history.back();
+
+  const target = event.target;
+  if (target == closeModalBtn || target == modalSection) {
+    window.location.hash = "tasks-active";
+  }
 }

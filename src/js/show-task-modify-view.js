@@ -37,7 +37,10 @@ ${task.comment}</textarea>
 </form>`;
 
   const modalSection = document.createElement("section");
-  modalSection.classList.add("modal", "modal-active", "task-modify-modal");
+  // modalSection.classList.add("modal", "modal-active", "task-modify-modal");
+  modalSection.classList.add("modal");
+  modalSection.classList.add("modal-active");
+  modalSection.classList.add("task-modify-modal");
   modalSection.innerHTML = taskModifyModalHTML;
 
   const main = document.getElementsByClassName("main")[0];
