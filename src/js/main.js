@@ -46,6 +46,7 @@ export function renderTemplate(route) {
           break;
         }
         case "archive": {
+          showTaskArchive(taskId);
           break;
         }
       }
@@ -58,7 +59,7 @@ function showTaskList() {
   initTaskList();
 }
 
-export function showTask(taskId) {
+function showTask(taskId) {
   const task = tasksList.findById(taskId);
   if (!task) {
     window.location.hash = "tasks-active";
@@ -69,7 +70,7 @@ export function showTask(taskId) {
   initTaskModal();
 }
 
-export function showTaskModify(taskId) {
+function showTaskModify(taskId) {
   const task = tasksList.findById(taskId);
   if (!task) {
     window.location.hash = "tasks-active";
@@ -80,7 +81,21 @@ export function showTaskModify(taskId) {
   initTaskModifyModal();
 }
 
+function showTaskArchive(taskId) {
+  const task = tasksList.findById(taskId);
+  if (!task) {
+    window.location.hash = "tasks-active";
+    return;
+  }
+  archiveTask(taskId);
+}
+
 export function modifyTask(task) {
   tasksList.modify(task);
+  db.update(tasksList);
+}
+
+function archiveTask(taskId) {
+  tasksList.archive(taskId);
   db.update(tasksList);
 }

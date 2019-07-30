@@ -7,10 +7,11 @@ export default function render(task) {
 <p class="modal-task-assignee">${task.assignee}</p>
 <p class="modal-task-due-date">${task.dueDate}</p>
 <span class="close" id="closeTaskModalBtn">&times;</span>
-<div><div class="btn" id="modifyTaskBtn">
-<a href="#task/${task.id}/modify">Редактировать</a></div>
-<div class="btn" id="archiveTaskBtn">
-<a href="#task/${task.id}/archive">Архивировать</a></div></div>
+<div><div class="btn">
+<a href="#task/${task.id}/modify" id="modifyTaskBtn">Редактировать</a></div>
+<div class="btn">
+<a href="#task/${task.id}/archive" id="archiveTaskBtn">Архивировать</a>
+</div></div>
 </article>`;
 
   const modalSection = document.createElement("section");
