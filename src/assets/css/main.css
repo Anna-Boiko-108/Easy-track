@@ -414,7 +414,7 @@ textarea {
 /* Tasklist  */
 
 /* Fallback for IE11 */
-.main {
+.tasks-list {
   padding: 15px;
   display: flex;
   flex-flow: row wrap;
@@ -445,7 +445,7 @@ textarea {
 }
 
 @supports (grid-area: auto) {
-  .main {
+  .tasks-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
@@ -480,8 +480,4 @@ textarea {
 
 .task-id {
   display: none;
-}
-
-/* Task modal window */
-.task-modal {
 }
