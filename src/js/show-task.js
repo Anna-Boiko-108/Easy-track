@@ -26,7 +26,7 @@ function taskClickHandler(event) {
   window.location.hash = "task/" + taskId;
 }
 
-export function initModal() {
+export function initTaskModal() {
   // Close modal by clicking close button
   const closeModalBtn = document.getElementById("closeTaskModalBtn");
   closeModalBtn.addEventListener("click", hideTaskModal);

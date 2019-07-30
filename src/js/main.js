@@ -6,6 +6,9 @@ import renderTasksList from "./tasks-list-view.js";
 import "./show-task.js";
 import renderShowTask from "./show-task-view.js";
 import "./router.js";
+import { initTaskModal } from "./show-task.js";
+import renderShowTaskModify from "./show-task-modify-view.js";
+import { initTaskModifyModal } from "./show-task-modify.js";
 
 // Load data from DB (localstorage)
 const db = new DB();
@@ -30,6 +33,19 @@ export function renderTemplate(route) {
     // URL: #task/:id
     if (route.args.length == 1) {
       showTask(route.args[0]);
+    } // URL: #task/:id/modify||archive
+    else {
+      const method = route.args[1];
+
+      switch (method) {
+        case "modify": {
+          showTaskModify(route.args[0]);
+          break;
+        }
+        case "archive": {
+          break;
+        }
+      }
     }
   }
 }
@@ -42,5 +58,21 @@ export function showTask(taskId) {
   }
 
   renderShowTask(task);
-  initModal();
+  initTaskModal();
+}
+
+export function showTaskModify(taskId) {
+  const task = tasksList.findById(taskId);
+  if (!task) {
+    window.location.hash = "tasks-active";
+    return;
+  }
+
+  renderShowTaskModify(task);
+  initTaskModifyModal();
+}
+
+export function modifyTask(task) {
+  tasksList.modify(task);
+  db.update(tasksList);
 }

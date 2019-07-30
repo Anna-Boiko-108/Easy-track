@@ -12,6 +12,10 @@ export default class TasksList {
     this.tasksList.push(task);
   }
 
+  modify(task) {
+    this.tasksList[task.id - 1] = task;
+  }
+
   // Actually do not removes contact from db but archives it
   remove(taskId) {
     const index = this.tasksList.findIndex(task => {
