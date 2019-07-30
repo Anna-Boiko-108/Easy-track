@@ -14,7 +14,6 @@ export default function render(task) {
 </article>`;
 
   const modalSection = document.createElement("section");
-  // modalSection.classList.add("modal", "modal-active", "task-modal");
   modalSection.classList.add("modal");
   modalSection.classList.add("modal-active");
   modalSection.classList.add("task-modal");

@@ -56,6 +56,4 @@ function hideModifyTaskModal(event) {
 
   document.body.classList.remove("no-scroll");
   modifyTaskModal.parentNode.removeChild(modifyTaskModal);
-
-  // window.location.hash = "task/" + id;
 }
