@@ -28,7 +28,10 @@ function hideAddTaskModal() {
   document.body.classList.remove("no-scroll");
   const addTaskModal = document.getElementById("addTaskModal");
   addTaskModal.classList.remove("modal-active");
-  window.history.back();
+
+  setTimeout(() => {
+    window.location.hash = "tasks-active";
+  }, 0);
 }
 
 function saveTaskSubmitHandler(event) {
