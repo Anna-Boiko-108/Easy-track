@@ -29,7 +29,6 @@ function modifyTaskSubmitHandler(event) {
     description: form.taskDescription.value,
     comment: form.taskComment.value,
     assignee: form.taskAssignee.value,
-    dueDate: form.taskDueDate.value,
     priority: form.taskPriority.value,
     archived: false
   };

@@ -5,7 +5,10 @@ export default function render(task) {
 <p class="modal-task-description">${task.description}</p>
 <p class="modal-task-comment">${task.comment}</p>
 <p class="modal-task-assignee">${task.assignee}</p>
-<p class="modal-task-due-date">${task.dueDate}</p>
+<p class="modal-task-due-date">
+${new Date(task.dueDate).toLocaleDateString("uk")}</p>
+<p class="modal-task-create-date">
+${new Date(task.createDate).toLocaleDateString("uk")}</p>
 <span class="close" id="closeTaskModalBtn">&times;</span>
 <div><div class="btn">
 <a href="#task/${task.id}/modify" id="modifyTaskBtn">Редактировать</a></div>

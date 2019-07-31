@@ -5,8 +5,8 @@ export default class Task {
     this.description = task.description;
     this.comment = task.comment;
     this.assignee = task.assignee;
-    this.dueDate = task.dueDate;
-    this.priority = task.priority;
+    this.dueDate = new Date(task.dueDate);
+    this.createDate = new Date();
     this.archived = false;
   }
 }

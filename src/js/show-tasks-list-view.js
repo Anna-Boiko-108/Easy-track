@@ -15,7 +15,9 @@ function render(data) {
 <p class="task-description">${task.description}</p>
 <p class="task-comment">${task.comment}</p>
 <p class="task-assignee">${task.assignee}</p>
-<p class="task-due-date">${task.dueDate}</p>
+<p class="task-due-date">${new Date(task.dueDate).toLocaleDateString("uk")}</p>
+<p class="task-due-date">
+${new Date(task.createDate).toLocaleDateString("uk")}</p>
 </article>`
     );
   }, "");

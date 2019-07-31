@@ -13,7 +13,8 @@ export default class TasksList {
   }
 
   modify(task) {
-    this.tasksList[task.id - 1] = task;
+    const prevTask = this.tasksList[task.id - 1];
+    this.tasksList[task.id - 1] = { ...prevTask, ...task };
   }
 
   archive(taskId) {

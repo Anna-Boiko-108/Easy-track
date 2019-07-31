@@ -24,14 +24,10 @@ ${task.comment}</textarea>
 <option value="4">ФИО 4</option>
 </select>
 </label>
-<label for="taskDueDate">Дата окончания<br>
-<input type="date" name="taskDueDate" id="taskDueDate" value="${task.dueDate}">
-</label>
 </div>
 <label for="taskPriority">Приоритет<br>
-<input type="range" id="taskPriority" name="taskPriority" min="1" max="5" value="${
-    task.priority
-  }" step="1" class="task-label-range"></label>
+<input type="range" id="taskPriority" name="taskPriority" min="1" max="5" 
+value="${task.priority}" step="1" class="task-label-range"></label>
 <input type="submit" value="Редактировать задание" class="submit-btn">
 <span class="close" id="closeModifyTaskModalBtn">&times;</span>
 </form>`;
