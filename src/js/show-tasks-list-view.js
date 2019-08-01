@@ -1,4 +1,16 @@
-export default function beforeRender(data) {
+export default function beforeRender(tasksListObj, methods) {
+  let sortCriteria = null;
+
+  if (!methods.sort) {
+    sortCriteria = "byCreateDate";
+  } else {
+    sortCriteria = methods.sort;
+  }
+
+  tasksListObj.sortBy(sortCriteria);
+
+  const data = tasksListObj.tasksList;
+
   const list = data.filter(task => {
     return !task.archived;
   });
@@ -15,6 +27,7 @@ function render(data) {
 <p class="task-description">${task.description}</p>
 <p class="task-comment">${task.comment}</p>
 <p class="task-assignee">${task.assignee}</p>
+<p class="task-priority">${task.priority}</p>
 <p class="task-due-date">${new Date(task.dueDate).toLocaleDateString("uk")}</p>
 <p class="task-due-date">
 ${new Date(task.createDate).toLocaleDateString("uk")}</p>

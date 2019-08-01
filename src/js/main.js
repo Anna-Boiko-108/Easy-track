@@ -10,6 +10,8 @@ import { initTaskModal } from "./show-task.js";
 import renderShowTaskModify from "./show-task-modify-view.js";
 import { initTaskModifyModal } from "./show-task-modify.js";
 import { initTaskList } from "./show-tasks-list.js";
+import renderSortTaskListSelect from "./sort-tasks-list-view";
+import initSortTaskListSelect from "./sort-tasks-list";
 
 // Load data from DB (localstorage)
 const db = new DB();
@@ -27,7 +29,9 @@ export function saveTask(data) {
 
 export function renderTemplate(route) {
   if (route.name == "show-tasks-list-view") {
-    showTaskList();
+    renderSortTaskListSelect();
+    initSortTaskListSelect();
+    showTasksList(route.args);
   }
 
   if (route.name == "show-task-view") {
@@ -54,8 +58,12 @@ export function renderTemplate(route) {
   }
 }
 
-function showTaskList() {
-  renderTasksList(tasksList.tasksList);
+function showTasksList(args) {
+  let methods = {};
+  if (args.includes("sort")) {
+    methods.sort = args[args.indexOf("sort") + 1];
+  }
+  renderTasksList(new TasksList(db), methods);
   initTaskList();
 }
 

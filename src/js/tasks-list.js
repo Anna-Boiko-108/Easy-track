@@ -9,7 +9,7 @@ export default class TasksList {
 
   add(task) {
     task.id = this.tasksList.length + 1;
-    this.tasksList.push(task);
+    this.tasksList.unshift(task);
   }
 
   modify(task) {
@@ -27,5 +27,28 @@ export default class TasksList {
 
   findById(taskId) {
     return this.tasksList[taskId - 1];
+  }
+
+  sortBy(sortCriteria) {
+    const compareFunction = TasksList.getSortCompareFunction(sortCriteria);
+    this.tasksList.sort(compareFunction);
+  }
+
+  static getSortCompareFunction(sortCriteria) {
+    const sortCompareFunctions = {
+      byCreateDate: (a, b) => {
+        return new Date(b.createDate) - new Date(a.createDate);
+      },
+      byCreateDateDesc: (a, b) => {
+        return new Date(a.createDate) - new Date(b.createDate);
+      },
+      byPriorityDesc: (a, b) => {
+        return b.priority - a.priority;
+      },
+      byPriority: (a, b) => {
+        return a.priority - b.priority;
+      }
+    };
+    return sortCompareFunctions[sortCriteria];
   }
 }
