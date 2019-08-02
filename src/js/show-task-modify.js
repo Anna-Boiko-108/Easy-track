@@ -1,30 +1,35 @@
 import { modifyTask } from "./main.js";
+import { setNewPath } from "./main.js";
 
-export function initTaskModifyModal() {
-  const taskModifyForm = document.forms["task-modify-form"];
-  taskModifyForm.addEventListener("submit", modifyTaskSubmitHandler);
-
+export default function initModal() {
+  // Init close task modify modal
   const closeModalBtn = document.getElementById("closeModifyTaskModalBtn");
-  closeModalBtn.addEventListener("click", hideModifyTaskModal);
+  closeModalBtn.addEventListener("click", closeModalEventHandler);
+  window.addEventListener("click", closeModalEventHandler);
 
-  const modalSection = document.querySelector(".task-modify-modal");
-  window.addEventListener("click", outOfModalClickHandler);
-  function outOfModalClickHandler(event) {
-    if (event.target == modalSection) {
-      hideModifyTaskModal(event);
-    }
-  }
-
-  const modifyTaskBtn = document.getElementById("closeModifyTaskModalBtn");
-  modifyTaskBtn.addEventListener("click", hideModifyTaskModal);
+  // Init submit modify task
+  const taskModifyForm = document.forms["task-modify-form"];
+  taskModifyForm.addEventListener("submit", submitModifyEventHandler);
 }
 
-function modifyTaskSubmitHandler(event) {
-  const taskId = document.getElementById("modifyTaskId");
+// Close task modify modal
+function closeModalEventHandler(event) {
+  const modalSection = document.querySelector(".task-modify-modal");
+  const closeModalBtn = document.getElementById("closeModifyTaskModalBtn");
+
+  if (event.target == modalSection || event.target == closeModalBtn) {
+    removeModal();
+    setNewPath("closeTaskModify");
+  }
+}
+
+// Modify task
+function submitModifyEventHandler(event) {
   event.preventDefault();
+  const taskId = document.getElementById("modifyTaskId");
   const form = event.target;
-  const task = {
-    id: taskId.innerText,
+  const taskModified = {
+    id: Number(taskId.innerText),
     name: form.taskName.value,
     description: form.taskDescription.value,
     comment: form.taskComment.value,
@@ -33,26 +38,14 @@ function modifyTaskSubmitHandler(event) {
     archived: false
   };
 
-  modifyTask(task);
-  hideModifyTaskModal(event);
+  modifyTask(taskModified);
+  setNewPath("closeTaskModify");
+  removeModal();
 }
 
-// Hide modal
-function hideModifyTaskModal(event) {
-  const closeModalBtn = document.getElementById("closeModifyTaskModalBtn");
-  const modifyTaskModal = document.querySelector(".task-modify-modal");
-  const taskModifyForm = document.forms["task-modify-form"];
-
-  const target = event.target;
-  if (
-    target == closeModalBtn ||
-    target == modifyTaskModal ||
-    target == taskModifyForm
-  ) {
-    const taskId = document.getElementById("modifyTaskId").innerText;
-    window.location.hash = "task/" + taskId;
-  }
-
+// Remove task modify modal from DOM
+function removeModal() {
   document.body.classList.remove("no-scroll");
-  modifyTaskModal.parentNode.removeChild(modifyTaskModal);
+  const modalSection = document.querySelector(".task-modify-modal");
+  modalSection.parentNode.removeChild(modalSection);
 }

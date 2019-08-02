@@ -12,26 +12,40 @@ export default class TasksList {
     this.tasksList.unshift(task);
   }
 
-  modify(task) {
-    const prevTask = this.tasksList[task.id - 1];
-    this.tasksList[task.id - 1] = { ...prevTask, ...task };
+  modify(taskModified) {
+    const index = this.tasksList.findIndex(task => task.id == taskModified.id);
+    const task = this.tasksList[index];
+    this.tasksList[index] = { ...task, ...taskModified };
   }
 
   archive(taskId) {
-    const index = this.tasksList.findIndex(task => {
-      return task.id == taskId;
-    });
-
+    const index = this.tasksList.findIndex(task => task.id == taskId);
     this.tasksList[index].archived = true;
   }
 
   findById(taskId) {
-    return this.tasksList[taskId - 1];
+    return this.tasksList.find(task => task.id == taskId);
   }
 
-  sortBy(sortCriteria) {
-    const compareFunction = TasksList.getSortCompareFunction(sortCriteria);
+  search(criterias) {
+    this.tasksList = this.tasksList.filter(task => {
+      for (let criteria in criterias) {
+        if (task[criteria].includes(criterias[criteria])) return true;
+      }
+    });
+  }
+
+  sortBy(criteria) {
+    const compareFunction = TasksList.getSortCompareFunction(criteria);
     this.tasksList.sort(compareFunction);
+  }
+
+  filter(criterias) {
+    for (let criteria in criterias) {
+      this.tasksList = this.tasksList.filter(task => {
+        return task[criteria] == criterias[criteria];
+      });
+    }
   }
 
   static getSortCompareFunction(sortCriteria) {

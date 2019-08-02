@@ -1,20 +1,30 @@
-export default function beforeRender(tasksListObj, methods) {
-  let sortCriteria = null;
+export default function beforeRender(tasksList, methods) {
+  let sortCriteria = "byCreateDate";
+  let filters = {
+    archived: false
+  };
+  let searchCriterias = {};
 
-  if (!methods.sort) {
-    sortCriteria = "byCreateDate";
-  } else {
+  if (methods.sort) {
     sortCriteria = methods.sort;
   }
+  if (methods.filterAssignees && methods.filterAssignees != 0) {
+    filters.assignee = methods.filterAssignees;
+  }
+  if (methods.filterPriority && methods.filterPriority != 0) {
+    filters.priority = methods.filterPriority;
+  }
+  if (methods.search) {
+    searchCriterias.name = methods.search;
+  }
 
-  tasksListObj.sortBy(sortCriteria);
+  if (Object.keys(searchCriterias).length !== 0) {
+    tasksList.search(searchCriterias);
+  }
+  tasksList.sortBy(sortCriteria);
+  tasksList.filter(filters);
 
-  const data = tasksListObj.tasksList;
-
-  const list = data.filter(task => {
-    return !task.archived;
-  });
-  render(list);
+  render(tasksList.tasksList);
 }
 
 function render(data) {

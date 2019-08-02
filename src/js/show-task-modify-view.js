@@ -16,7 +16,7 @@ ${task.comment}</textarea>
 </label>
 <div class="modal-subsection-wrapper">
 <label for="taskAssignee">Исполнитель<br>
-<select name="taskAssignee" required >
+<select name="taskAssignee" required id="taskAssignee">
 <option></option>
 <option value="1">ФИО 1</option>
 <option value="2">ФИО 2</option>
@@ -41,4 +41,7 @@ value="${task.priority}" step="1" class="task-label-range"></label>
   const main = document.getElementsByClassName("main")[0];
   main.appendChild(modalSection);
   document.body.classList.add("no-scroll");
+
+  const select = document.getElementById("taskAssignee");
+  select.value = task.assignee;
 }

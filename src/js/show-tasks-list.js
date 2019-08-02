@@ -1,10 +1,14 @@
+import { setNewPath } from "./main.js";
+
 export function initTaskList() {
+  // Init tasks click
   const tasksListSection = document.querySelector(".tasks-list");
   tasksListSection.addEventListener("click", taskClickHandler);
 }
 
+// Init task opening process
 function taskClickHandler(event) {
-  // Find task's id node
+  // Check if the task was clicked not smth else
   let target = event.target;
   let fired = false;
 
@@ -15,15 +19,17 @@ function taskClickHandler(event) {
     }
     target = target.parentNode;
   }
-
   if (!fired) return;
 
-  // Find task's id value
+  const taskId = getTaskId(target);
+  setNewPath("openTask", { taskId });
+}
+
+// Find task's id value
+function getTaskId(target) {
   const listOfTaskNodes = Array.from(target.children);
   const taskId = listOfTaskNodes.find(node => {
     return node.classList.contains("task-id");
   }).innerText;
-
-  //   Change hash
-  window.location.hash = "task/" + taskId;
+  return taskId;
 }

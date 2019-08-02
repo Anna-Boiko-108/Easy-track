@@ -11,9 +11,9 @@ ${new Date(task.dueDate).toLocaleDateString("uk")}</p>
 ${new Date(task.createDate).toLocaleDateString("uk")}</p>
 <span class="close" id="closeTaskModalBtn">&times;</span>
 <div><div class="btn">
-<a href="#task/${task.id}/modify" id="modifyTaskBtn">Редактировать</a></div>
+<a id="modifyTaskBtn">Редактировать</a></div>
 <div class="btn">
-<a href="#task/${task.id}/archive" id="archiveTaskBtn">Архивировать</a>
+<a id="archiveTaskBtn">Архивировать</a>
 </div></div>
 </article>`;
 

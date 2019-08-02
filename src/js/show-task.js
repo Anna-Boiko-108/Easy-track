@@ -1,44 +1,49 @@
-export function initTaskModal() {
-  // Close modal by clicking close button
+import { archiveTask } from "./main.js";
+import { setNewPath } from "./main.js";
+
+export default function initModal() {
+  // Init close task modal
   const closeModalBtn = document.getElementById("closeTaskModalBtn");
-  closeModalBtn.addEventListener("click", hideTaskModal);
+  closeModalBtn.addEventListener("click", closeModalEventHandler);
+  window.addEventListener("click", closeModalEventHandler);
 
-  // Close modal by clicking out of modal window
-  const modalSection = document.querySelector(".task-modal");
-  window.addEventListener("click", outOfModalClickHandler);
-  function outOfModalClickHandler(event) {
-    if (event.target == modalSection) {
-      hideTaskModal(event);
-    }
-  }
-
-  // Close modal by clicking modify button
+  // Init modify task button
   const modifyTaskBtn = document.getElementById("modifyTaskBtn");
-  modifyTaskBtn.addEventListener("click", hideTaskModal);
+  modifyTaskBtn.addEventListener("click", modifyBtnClickHandler);
 
-  // Close modal by clicking archive button
+  // Init archive task button
   const archiveTaskBtn = document.getElementById("archiveTaskBtn");
-  archiveTaskBtn.addEventListener("click", hideTaskModal);
+  archiveTaskBtn.addEventListener("click", archiveBtnClickHandler);
 }
 
-// Close modal
-function hideTaskModal(event) {
+// Close task modal
+function closeModalEventHandler(event) {
+  const modalSection = document.querySelector(".task-modal");
   const closeModalBtn = document.getElementById("closeTaskModalBtn");
-  const archiveTaskBtn = document.getElementById("archiveTaskBtn");
 
+  if (event.target == modalSection || event.target == closeModalBtn) {
+    setNewPath("closeTask");
+    removeModal();
+  }
+}
+
+// Initiate opening modify task modal
+function modifyBtnClickHandler() {
+  setNewPath("openModifyTask");
+  removeModal();
+}
+
+// Initiate archive task process
+function archiveBtnClickHandler() {
+  const taskId = document.querySelector(".modal-task-id").innerText;
+  archiveTask(taskId);
+  removeModal();
+  setNewPath("closeTask");
+}
+
+// Remove modal from DOM
+function removeModal() {
   document.body.classList.remove("no-scroll");
   const modalSection = document.querySelector(".task-modal");
   modalSection.parentNode.removeChild(modalSection);
-
-  const target = event.target;
-
-  if (
-    target == closeModalBtn ||
-    target == modalSection ||
-    target == archiveTaskBtn
-  ) {
-    setTimeout(() => {
-      window.location.hash = "tasks-active";
-    }, 1000);
-  }
 }

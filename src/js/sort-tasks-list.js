@@ -1,25 +1,46 @@
+import { setNewPath } from "./main.js";
+
 export default function init() {
+  // Init sort select
   const sortSelect = document.getElementById("taskListSortSelect");
-  sortSelect.addEventListener("change", selectChangeHandler);
+  sortSelect.addEventListener("change", sortChangeHandler);
+
+  // Init filter assignee select
+  const filterAssigneeSelect = document.getElementById("filterAssigneeSelect");
+  filterAssigneeSelect.addEventListener("change", filterAssigneeChangeHandler);
+
+  // Init filter priority select
+  const filterPrioritySelect = document.getElementById("filterPrioritySelect");
+  filterPrioritySelect.addEventListener("change", filterPriorityChangeHandler);
+
+  // Init search button
+  const taskSearchBtn = document.getElementById("taskSearchBtn");
+  taskSearchBtn.addEventListener("click", searchClickHandler);
 }
 
-function selectChangeHandler(event) {
+function sortChangeHandler(event) {
   const select = event.target;
   const sortCriteria = select.options[select.selectedIndex].value;
 
-  const path = window.location.hash.slice(1);
-  const pathArray = path.split("/");
+  setNewPath("sort", { sortCriteria });
+}
 
-  const pathIncludesSort = pathArray.includes("sort");
+function filterAssigneeChangeHandler(event) {
+  const select = event.target;
+  const filterCriteria = select.options[select.selectedIndex].value;
 
-  if (pathIncludesSort) {
-    const indexOfSort = pathArray.indexOf("sort");
-    pathArray[indexOfSort + 1] = sortCriteria;
-  } else {
-    pathArray.push("sort");
-    pathArray.push(sortCriteria);
-  }
+  setNewPath("filterAssignees", { filterCriteria });
+}
+function filterPriorityChangeHandler(event) {
+  const select = event.target;
+  const filterCriteria = select.options[select.selectedIndex].value;
 
-  const newPath = pathArray.join("/");
-  window.location.hash = newPath;
+  setNewPath("filterPriority", { filterCriteria });
+}
+function searchClickHandler() {
+  const taskSearchInput = document.getElementById("taskSearchInput");
+
+  const searchText = taskSearchInput.value;
+
+  setNewPath("search", { searchText });
 }
