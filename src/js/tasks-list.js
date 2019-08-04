@@ -7,6 +7,10 @@ export default class TasksList {
     return this.tasksList.length === 0;
   }
 
+  get length() {
+    return this.tasksList.length;
+  }
+
   add(task) {
     task.id = this.tasksList.length + 1;
     this.tasksList.unshift(task);
@@ -30,7 +34,12 @@ export default class TasksList {
   search(criterias) {
     this.tasksList = this.tasksList.filter(task => {
       for (let criteria in criterias) {
-        if (task[criteria].includes(criterias[criteria])) return true;
+        if (
+          task[criteria]
+            .toUpperCase()
+            .includes(criterias[criteria].toUpperCase())
+        )
+          return true;
       }
     });
   }
@@ -51,10 +60,12 @@ export default class TasksList {
   static getSortCompareFunction(sortCriteria) {
     const sortCompareFunctions = {
       byCreateDate: (a, b) => {
-        return new Date(b.createDate) - new Date(a.createDate);
+        return b.id - a.id;
+        // return new Date(b.createDate) - new Date(a.createDate);
       },
       byCreateDateDesc: (a, b) => {
-        return new Date(a.createDate) - new Date(b.createDate);
+        return a.id - b.id;
+        // return new Date(a.createDate) - new Date(b.createDate);
       },
       byPriorityDesc: (a, b) => {
         return b.priority - a.priority;

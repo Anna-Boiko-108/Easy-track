@@ -1,34 +1,21 @@
 const routes = [
   {
-    name: null,
+    name: "home",
     href: ""
   },
   {
-    name: null,
-    href: "contacts"
-  },
-  {
-    name: null,
-    href: "add-task"
-  },
-  {
-    name: "show-tasks-list-view",
+    name: "tasks-active",
     href: "tasks-active",
     args: null
   },
   {
-    name: null,
-    href: "tasks-archived"
+    name: "contacts",
+    href: "contacts"
   },
   {
-    name: null,
-    href: "assignees"
+    name: "add-task",
+    href: "add-task"
   }
-  // {
-  //   name: "show-task-view",
-  //   href: "task",
-  //   args: null
-  // }
 ];
 
 export default routes;

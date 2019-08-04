@@ -6,12 +6,13 @@ html {
 }
 
 body {
-  display: grid;
-  grid-template-areas:
+  /* display: flex; */
+  /* display: grid; */
+  /* grid-template-areas:
     "header header"
     "nav main"
     "footer footer";
-  grid-template-columns: 330px 1fr;
+  grid-template-columns: 330px 1fr; */
   height: 100vh;
   font-size: 1.8rem;
   color: #394241;
@@ -25,23 +26,31 @@ a {
 /* Main layout sections */
 .header {
   padding: 30px;
-  grid-area: header;
+  /* grid-area: header; */
   /* background-color: #ffffff; */
 }
 
-.footer {
-  grid-area: footer;
-  /* background-color: wheat; */
+/* .footer {
+  background-color: #a0d1cd;
+} */
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 2rem;
 }
 
 .main {
-  grid-area: main;
+  padding: 30px;
+  /* grid-area: main; */
   /* background-color: burlywood; */
 }
 
 .left-nav {
   margin: 0 30px;
-  grid-area: nav;
+  /* grid-area: nav; */
   /* background-color: cornflowerblue; */
 }
 
@@ -480,4 +489,34 @@ textarea {
 
 .task-id {
   display: none;
+}
+
+.select-panel {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem 3rem;
+}
+
+.tasks-list-pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.page {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  border: 2px solid #77c9d4;
+  transition: border 0.5s ease;
+  cursor: pointer;
+}
+
+.page:hover,
+.page-active {
+  border: 2px dotted #1b7885;
+  transition: border 0.5s ease;
 }
