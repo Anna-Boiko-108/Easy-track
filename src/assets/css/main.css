@@ -246,7 +246,7 @@ a {
 
 /* Section content */
 .content {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 /* Modal window */
@@ -625,6 +625,26 @@ textarea {
   max-width: 50rem;
 }
 
+/* Contacts section */
+.contacts-article {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.contacts-address,
+.contacts-map {
+  margin: 1rem;
+}
+
+.contacts-address a,
+.contacts-address address {
+  display: block;
+  margin: 3rem;
+}
+
 /* Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
   html {
@@ -717,5 +737,9 @@ textarea {
   .add-task-modal,
   .task-modal-card {
     width: 90%;
+  }
+
+  .contacts-map iframe {
+    max-width: 35rem;
   }
 }

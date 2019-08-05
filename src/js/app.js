@@ -9,6 +9,7 @@ import renderWelcome from "./view/welcome-view.js";
 import renderLeftNav from "./view/left-nav-view.js";
 import renderContent from "./view/content-view.js";
 import renderAddTaskModal from "./view/add-task-view.js";
+import renderAddress from "./view/contacts-view.js";
 import { showAddTaskModal } from "./view/add-task-view.js";
 import renderTask from "./view/task-view.js";
 import renderTaskModify from "./view/task-modify-view.js";
@@ -43,6 +44,10 @@ export function renderTemplate(route) {
     renderHome();
   }
 
+  if (route.name == "contacts") {
+    renderContacts();
+  }
+
   if (route.name == "tasks-active") {
     renderTasksActive(route.args);
   }
@@ -57,6 +62,12 @@ function renderHome() {
   renderMain();
   renderSlider();
   renderWelcome();
+}
+
+function renderContacts() {
+  renderHeader();
+  renderMain();
+  renderAddress();
 }
 
 function renderTasksActive(args) {

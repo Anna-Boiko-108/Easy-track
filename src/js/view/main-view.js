@@ -19,7 +19,9 @@ function render() {
 
   // Styles
   const header = document.querySelector(".header");
-  let height = window.getComputedStyle(header).getPropertyValue("height");
+  let height = parseInt(
+    window.getComputedStyle(header).getPropertyValue("height")
+  );
 
-  main.style.marginTop = height;
+  main.style.marginTop = `${height + 20}px`;
 }
