@@ -71,10 +71,10 @@ function render(data, methods, pagesQuantity) {
           <p class="task-comment">${task.comment}</p>
           <p class="task-assignee">${task.assignee}</p>
           <div class="task-dates">
-            <p class="task-due-date">
-              ${new Date(task.dueDate).toLocaleDateString("uk")}</p>
             <p class="task-create-date">
               ${new Date(task.createDate).toLocaleDateString("uk")}</p>
+            <p class="task-due-date">
+              ${new Date(task.dueDate).toLocaleDateString("uk")}</p>
           </div>
       </article>`
     );

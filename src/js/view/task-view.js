@@ -20,10 +20,10 @@ function render(task) {
       <p class="modal-task-comment">${task.comment}</p>
       <p class="modal-task-assignee">${task.assignee}</p>
       <div class="task-dates">
-<p class="modal-task-due-date">
-${new Date(task.dueDate).toLocaleDateString("uk")}</p>
 <p class="modal-task-create-date">
 ${new Date(task.createDate).toLocaleDateString("uk")}</p>
+<p class="modal-task-due-date">
+${new Date(task.dueDate).toLocaleDateString("uk")}</p>
       </div>
       <div class="task-modal-btns">
         <div class="submit-btn submit-btn-modal">
