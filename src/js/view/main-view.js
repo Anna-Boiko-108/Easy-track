@@ -16,4 +16,10 @@ function render() {
 
   const rootSection = document.getElementById("root");
   rootSection.insertAdjacentElement("beforeend", main);
+
+  // Styles
+  const header = document.querySelector(".header");
+  let height = window.getComputedStyle(header).getPropertyValue("height");
+
+  main.style.marginTop = height;
 }

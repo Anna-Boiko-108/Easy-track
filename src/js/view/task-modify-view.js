@@ -43,7 +43,7 @@ function render(task) {
         <input type="range" id="taskPriority" name="taskPriority" min="1" max="5" 
           value="${task.priority}" step="1" class="task-label-range">
       </label>
-      <input type="submit" value="Редактировать задание" class="submit-btn">
+      <input type="submit" value="Редактировать" class="submit-btn">
       <span class="close" id="closeModifyTaskModalBtn">&times;</span>
     </form>`;
 

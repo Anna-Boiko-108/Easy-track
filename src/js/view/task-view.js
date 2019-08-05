@@ -19,18 +19,20 @@ function render(task) {
       <p class="modal-task-description">${task.description}</p>
       <p class="modal-task-comment">${task.comment}</p>
       <p class="modal-task-assignee">${task.assignee}</p>
-      <p class="modal-task-due-date">
-        ${new Date(task.dueDate).toLocaleDateString("uk")}</p>
-      <p class="modal-task-create-date">
-        ${new Date(task.createDate).toLocaleDateString("uk")}</p>
-      <span class="close" id="closeTaskModalBtn">&times;</span>
-      <div>
-        <div class="btn">
+      <div class="task-dates">
+<p class="modal-task-due-date">
+${new Date(task.dueDate).toLocaleDateString("uk")}</p>
+<p class="modal-task-create-date">
+${new Date(task.createDate).toLocaleDateString("uk")}</p>
+      </div>
+      <div class="task-modal-btns">
+        <div class="submit-btn submit-btn-modal">
           <a id="modifyTaskBtn">Редактировать</a></div>
-        <div class="btn">
+        <div class="submit-btn submit-btn-modal">
           <a id="archiveTaskBtn">Архивировать</a>
         </div>
       </div>
+      <span class="close" id="closeTaskModalBtn">&times;</span>
     </article>`;
 
   const taskElem = document.createElement("section");

@@ -64,17 +64,18 @@ function render(data, methods, pagesQuantity) {
   const tasksListHTML = data.reduce((acc, task) => {
     return (
       acc +
-      `<article class="task">
+      `<article class="task task-priority-${task.priority}">
           <p class="task-id">${task.id}</p>
           <h3 class="task-name">${task.name}</h3>
           <p class="task-description">${task.description}</p>
           <p class="task-comment">${task.comment}</p>
           <p class="task-assignee">${task.assignee}</p>
-          <p class="task-priority">${task.priority}</p>
-          <p class="task-due-date">
-            ${new Date(task.dueDate).toLocaleDateString("uk")}</p>
-          <p class="task-due-date">
-            ${new Date(task.createDate).toLocaleDateString("uk")}</p>
+          <div class="task-dates">
+            <p class="task-due-date">
+              ${new Date(task.dueDate).toLocaleDateString("uk")}</p>
+            <p class="task-create-date">
+              ${new Date(task.createDate).toLocaleDateString("uk")}</p>
+          </div>
       </article>`
     );
   }, "");
@@ -186,7 +187,7 @@ function taskClickHandler(event) {
   let fired = false;
 
   while (target.className != "tasks-list") {
-    if (target.className == "task") {
+    if (target.classList.contains("task")) {
       fired = true;
       break;
     }

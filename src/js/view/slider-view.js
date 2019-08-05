@@ -72,6 +72,9 @@ function render() {
 
 function init() {
   const slider = document.querySelector(".slider");
+
+  if (!slider) return;
+
   const sliderContainer = document.querySelector(".slider-container");
   const slides = document.getElementsByClassName("slide");
   const imageWidth = document.querySelector(".slide img").clientWidth;
