@@ -124,23 +124,4 @@ function init() {
     sliderContainer.style.transition = "none";
     sliderContainer.style.transform = `translateX(${-slideInd * imageWidth}px)`;
   }
-
-  // Start auto slideshow
-  let autoSlideShow = setInterval(() => {
-    moveSlide(1);
-  }, 5000);
-
-  // Auto slideshow
-  slider.addEventListener("mouseout", startAutoSlideShow);
-  slider.addEventListener("mouseover", stopAutoSlideShow);
-
-  function startAutoSlideShow() {
-    autoSlideShow = setInterval(() => {
-      moveSlide(1);
-    }, 5000);
-  }
-
-  function stopAutoSlideShow() {
-    clearInterval(autoSlideShow);
-  }
 }
